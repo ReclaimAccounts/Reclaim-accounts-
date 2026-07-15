@@ -12,13 +12,29 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Reclaim Accounts" />
     <meta name="twitter:description" content="Official recovery guides, account security solutions, and resources to help you protect and reclaim your online accounts." />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Yahan se leading slashes (/) hata diye hain -->
+    
     <script type="module" crossorigin src="assets/index-DNzxDlWf.js"></script>
     <link rel="stylesheet" crossorigin href="assets/index-CskIFb9U.css">
+
+    <!-- Image Path Fix Script for GitHub Pages -->
+    <script>
+      // Yeh script dynamically background aur broken image paths se absolute '/' hatata hai
+      const observer = new MutationObserver(() => {
+        document.querySelectorAll('img').forEach(img => {
+          if (img.src && img.src.includes('/assets/screen-')) {
+            const relativePath = img.getAttribute('src').replace(/^\//, '');
+            if (img.getAttribute('src') !== relativePath) {
+              img.src = relativePath;
+            }
+          }
+        });
+      });
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+    </script>
   </head>
   <body>
     <div id="root"></div>
